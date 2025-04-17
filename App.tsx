@@ -1,14 +1,12 @@
-import { Text, View, Button, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import styles from "./styles"
+import CustomComponent from "./components/CustomComponent";
 
 function App(){
   return(
     <>
     <View>
-
-    <Text style ={styles.textStyle}>Hello Buddy</Text>
-    <Button title ="Hello" color="green"></Button>
-
+      <CustomComponent/>
     </View>
     </>
   )
