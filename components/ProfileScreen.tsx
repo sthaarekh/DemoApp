@@ -1,10 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import { Button } from 'react-native-paper'
 
 const ProfileScreen = (props) => {
-  return (
+  return(
     <View style={style.viewStyle}>
       <Text style={style.headingText}>{props.route.params.name} Profile Screen</Text>
+      <Button mode="contained" title='User' onPress={() => props.navigation.navigate('User')}>User</Button>
+
     </View>
   )
 }
