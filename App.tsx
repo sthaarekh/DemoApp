@@ -1,14 +1,21 @@
 import { Text, View, StyleSheet } from "react-native";
-import styles from "./styles"
-import CustomComponent from "./components/CustomComponent";
+import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from "./components/HomeScreen";
+import ProfileScreen from "./components/ProfileScreen";
+import UserScreen from "./components/UserScreen";
 
 function App(){
+  const Stack = createNativeStackNavigator()
   return(
-    <>
-    <View>
-      <CustomComponent/>
-    </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator
+      initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="User" component={UserScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
