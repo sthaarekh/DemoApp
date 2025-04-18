@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, StatusBar} from 'react-native'
 import React from 'react'
 import { Button } from 'react-native-paper'
 
 const HomeScreen = (props) => {
   return (
     <View style={style.viewStyle}>
+      <StatusBar backgroundColor="green" barStyle="light-content" />
       <Text style={style.headingText}>Home Screen</Text>
       <Button mode="contained" onPress={() => props.navigation.navigate('Profile', {name:'Arekh'})}>
         Profile

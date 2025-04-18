@@ -6,8 +6,7 @@ const ProfileScreen = (props) => {
   return(
     <View style={style.viewStyle}>
       <Text style={style.headingText}>{props.route.params.name} Profile Screen</Text>
-      <Button mode="contained" title='User' onPress={() => props.navigation.navigate('User')}>User</Button>
-
+      <Button mode="contained" onPress={() => props.navigation.navigate('User')}>User</Button>
     </View>
   )
 }

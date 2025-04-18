@@ -11,7 +11,15 @@ function App(){
     <NavigationContainer>
       <Stack.Navigator
       initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{
+            title: "Home Screen",
+            headerStyle:{
+              backgroundColor: "orange"
+            },
+            headerTintColor: '#fff'
+            }
+          }
+         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="User" component={UserScreen} />
       </Stack.Navigator>
