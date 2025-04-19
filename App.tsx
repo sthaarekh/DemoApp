@@ -1,6 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
 import 'react-native-reanimated';
-
 import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./components/HomeScreen";
@@ -29,13 +28,22 @@ const StackNav = ()=>{
   )
 }
 
-function App(){
+const DrawerNav=()=>{
   const Drawer = createDrawerNavigator();
   return(
+    <Drawer.Navigator screenOptions={{
+        headerShown:false
+      }
+    }>
+      <Drawer.Screen name="Home" component={StackNav} />
+    </Drawer.Navigator>
+  )
+}
+
+function App(){
+  return(
     <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomeScreen} />
-      </Drawer.Navigator>
+      <DrawerNav/>
     </NavigationContainer>
   )
 }

@@ -5,7 +5,7 @@ import { Button } from 'react-native-paper'
 const ProfileScreen = (props) => {
   return(
     <View style={style.viewStyle}>
-      <Text style={style.headingText}>{props.route.params.name} Profile Screen</Text>
+      <Text style={style.headingText}>Profile Screen</Text>
       <Button mode="contained" onPress={() => props.navigation.navigate('User')}>User</Button>
     </View>
   )
