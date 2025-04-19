@@ -6,6 +6,35 @@ import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import UserScreen from "./components/UserScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useReducedMotion } from "react-native-reanimated";
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+
+const tabConfig=[
+  {
+    name:"Home",
+    component: HomeScreen,
+    focusedIcon: 'home',
+    unFocusedIcon: 'home-outline',
+    iconComponent: Ionicons
+  },
+  {
+    name:"Profile",
+    component: ProfileScreen,
+    focusedIcon: 'settings',
+    unFocusedIcon: 'settings-outline',
+    iconComponent: Ionicons,
+  },
+  {
+    name:"User",
+    component: UserScreen,
+    focusedIcon: 'user',
+    unFocusedIcon: 'user-o',
+    iconComponent: FontAwesome,
+  }
+]
 
 
 const StackNav = ()=>{
@@ -41,9 +70,40 @@ const DrawerNav=()=>{
 }
 
 function App(){
+  const screenOptions = ({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      const routeConfig = tabConfig.find(config => config.name === route.name);
+      const iconName = focused
+        ? routeConfig.focusedIcon
+        : routeConfig.unFocusedIcon;
+      const IconComponent = routeConfig.iconComponent;
+  
+      return <IconComponent name={iconName} size={size} color={color} />;
+    },
+          tabBarActiveTintColor:'blue',
+          tabBarInactiveTintColor: 'black',
+          tabBarLabelStyle:{
+            fontSize:14,
+            paddingBottom:5,
+            fontWeight: 600,
+          },
+          tabBarStyle:{
+            height:60,
+            paddingTop:0,
+          }
+  });
+  
+  const BottomTab = createBottomTabNavigator(); 
   return(
     <NavigationContainer>
-      <DrawerNav/>
+      <BottomTab.Navigator screenOptions={screenOptions}>
+        {tabConfig.map(routeConfig=>(
+
+      <BottomTab.Screen key={routeConfig.name} name={routeConfig.name} component={routeConfig.component} />
+        ))}
+
+      </BottomTab.Navigator>
+      {/* <DrawerNav/> */}
     </NavigationContainer>
   )
 }
